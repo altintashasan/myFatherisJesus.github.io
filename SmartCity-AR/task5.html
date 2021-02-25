@@ -7,10 +7,7 @@
     <body style="margin : 0px; overflow: hidden;">
         <a-scene embedded arjs>
             <a-assets>
-		<video id="video1" preload="auto"
-               src="assets/video.mp4"
-               width="160" height="90" autoplay loop="true"
-               crossOrigin="anonymous" muted></video>
+		<video id="video1" src="assets/video.mp4"  loop="true"></video>
                 <a-asset-item id="helmet" src="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/KhronosGroup/glTF-Sample-Models/master/2.0/SciFiHelmet/glTF/SciFiHelmet.gltf"></a-asset-item>
             </a-assets>
 
@@ -27,9 +24,7 @@
                 </a-entity>
 
                 <!-- second entity: reference to the above audio -->
-                <a-entity material="shader: flat; src: #video1"
-                geometry="primitive: plane; width: 160; height: 90">
-      		</a-entity>
+		<a-video src = "#video1" width = "8" height = "4.5" position = "0 3 -9">
             </a-marker>
 
             <!-- add a camera to the scene that renders the objects for us -->
