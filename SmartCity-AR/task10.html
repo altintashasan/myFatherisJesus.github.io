@@ -30,7 +30,7 @@
           marker.addEventListener("markerLost", function (evt) {
             markerFound = 0;
             Video_0.pause();
-            button.hidden = true;
+            button.hidden = false;
           });
 
           // button for video play/pause
@@ -50,6 +50,7 @@
           // button for full screen
           fullbutton.addEventListener("click",
             function (evt){
+             console.log("button clicked")
               if (fullscreen == 0) {
                 if (elem.requestFullscreen) {
                     elem.requestFullscreen();
