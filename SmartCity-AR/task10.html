@@ -16,9 +16,12 @@
           var marker = document.querySelector("#marker");
           var fullbutton = document.querySelector("#fullscreen");
           var Video_0 = document.querySelector("#Video_Asset_0");
+          var Video_1 = document.querySelector("#Video_Asset_1");
+
           var button = document.querySelector("#mutebutton");
           button.hidden = true;
           Video_0.pause();
+          Video_1.pause();
 
           marker.addEventListener("markerFound", function (evt) {
             markerFound = 1;
@@ -30,6 +33,8 @@
           marker.addEventListener("markerLost", function (evt) {
             markerFound = 0;
             Video_0.pause();
+            Video_1.pause();
+
             button.hidden = false;
           });
 
@@ -39,11 +44,15 @@
             if(Video_0.muted==true){
               button.innerHTML="Pause";
               Video_0.muted=false;
+              Video_1.muted=false;
+              Video_0.play();
               Video_0.play();
             }else{
               button.innerHTML="Play";
               Video_0.muted=true;
               Video_0.pause();
+              Video_1.muted=true;
+              Video_1.pause();
             }
           });
 
@@ -101,6 +110,8 @@
     <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
     <a-assets>
       <video id="Video_Asset_0" autoplay="false" loop crossorigin="anonymous" src="assets/video.mp4" webkit-playsinline playsinline controls muted></video>
+      <video id="Video_Asset_1" autoplay="false" loop crossorigin="anonymous" src="assets/pokemon.mp4" webkit-playsinline playsinline controls muted></video>
+
     </a-assets>
     <a-marker id="marker" preset="hiro" emitevents="true" button>
       <a-video src="#Video_Asset_0" id="Video_0" class="intersectable" width="1" height="1" position="0 0 0" rotation="0 90 90" color="#FFFFFF" transparent=False></a-video>
@@ -112,8 +123,9 @@
 
             <!-- handle kanji marker -->
        <a-marker preset='kanji'emitevents="true" button>
-      <a-video src="#Video_Asset_0" id="Video_0" class="intersectable" width="1" height="1" position="0 0 0" rotation="0 90 90" color="#FFFFFF" transparent=False></a-video>
-         </a-marker>
+      <a-video src="#Video_Asset_1" id="Video_1" class="intersectable" width="1" height="1" position="0 0 0" rotation="0 90 90" color="#FFFFFF" transparent=False></a-video>
+        
+    </a-marker>
     
     
     <a-entity camera></a-entity>
